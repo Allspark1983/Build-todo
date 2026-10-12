@@ -1,0 +1,11 @@
+{
+  "name": "build-todo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A plain, commented to-do assignment with a small REST API.",
+  "scripts": {
+    "start": "node todo/server.js",
+    "check": "node --check todo/server.js && node --check todo/script.js"
+  },
+  "engines": { "node": ">=22" }
+}

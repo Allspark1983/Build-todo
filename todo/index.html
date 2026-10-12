@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Fit the page to a phone as well as a computer. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>My To-Do List</h1>
+    <p>Keep home, family and study tasks in one place.</p>
+    <p id="count" aria-live="polite">Loading tasks...</p>
+    <p id="message" role="status"></p>
+
+    <!-- CREATE: submit a new task without reloading the page. -->
+    <fieldset id="controls" aria-label="Task controls">
+      <form id="add-form">
+        <label for="new-task">New task</label>
+        <div class="row">
+          <input id="new-task" placeholder="Add another task..." maxlength="120" required>
+          <button>Add</button>
+        </div>
+      </form>
+      <!-- READ: JavaScript inserts the task rows here. -->
+      <ul id="task-list" aria-label="Tasks"></ul>
+      <p id="empty" hidden>No tasks yet. Add one above.</p>
+      <button id="reset" type="button">Reset</button>
+    </fieldset>
+  </main>
+
+  <!-- Reuse this row for every object in the tasks array. -->
+  <template id="task-template">
+    <li>
+      <label class="task-label"><input type="checkbox"><span></span></label>
+      <div class="row">
+        <button type="button" data-action="edit">Edit</button>
+        <button type="button" data-action="delete">Delete</button>
+      </div>
+    </li>
+  </template>
+
+  <!-- One plain dialog handles editing, deletion and reset confirmation. -->
+  <dialog id="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-message">
+    <form id="dialog-form">
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-message"></p>
+      <p id="dialog-error" role="alert"></p>
+      <fieldset id="dialog-controls">
+        <label id="edit-field">Task name <input id="edit-task" maxlength="120"></label>
+        <div class="row">
+          <button id="confirm">Save</button>
+          <button id="cancel" type="button">Cancel</button>
+        </div>
+      </fieldset>
+    </form>
+  </dialog>
+</body>
+</html>

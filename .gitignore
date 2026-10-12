@@ -1,0 +1,6 @@
+# Keep personal task data, secrets and local files out of GitHub.
+todo/tasks.json
+todo/tasks.json.tmp
+node_modules/
+.env*
+.DS_Store
